@@ -24,7 +24,7 @@ public class MyCircle extends MyShape {
     }
 
     public String toString() {
-        return getClass().getName() + "\nRadius: " + Double.toString(this.getRadius()) + "\nPerimeter: " + Double.toString(this.getPerimeter()) + "\nArea: " + Double.toString(this.getArea());
+        return getClass().getName() + "\nRadius: " + this.getRadius() + "\nPerimeter: " + this.getPerimeter() + "\nArea: " + this.getArea();
     }
     public void draw(GraphicsContext gc) {
         gc.setFill(this.color.getColor());

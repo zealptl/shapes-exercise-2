@@ -35,8 +35,8 @@ public class MyRectangle extends MyShape {
     }
 
     public String toString() {
-        return this.getClass().getName() + "\nWidth: " + Double.toString(this.width) + "\nHeight: " + Double.toString(this.height) +
-                "\nPerimeter: " + Double.toString(this.getPerimeter()) + "\nArea: " + Double.toString(this.getArea());
+        return this.getClass().getName() + "\nWidth: " + this.width + "\nHeight: " + this.height +
+                "\nPerimeter: " + this.getPerimeter() + "\nArea: " + this.getArea();
     }
 
     public void draw(GraphicsContext gc) {

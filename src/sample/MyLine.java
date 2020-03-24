@@ -31,7 +31,7 @@ public class MyLine extends MyShape {
     }
 
     public String toString() {
-        return getClass().getName() + "\nLength: " + Double.toString(this.getLength()) + "\nAngle: " + Double.toString(this.get_xAngle());
+        return getClass().getName() + "\nLength: " + this.getLength() + "\nAngle: " + this.get_xAngle();
     }
     public void draw(GraphicsContext gc) {
         gc.setStroke(this.color.getColor());

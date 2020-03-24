@@ -23,7 +23,8 @@ public class MyPolygon extends MyShape {
     public double getAngle() {  return (double)((sides - 2) * 180) / sides; }
 
     public String toString() {
-        return getClass().getName() + "\nSide length: " + Double.toString(this.getSide()) + "\nInterior angle: " + Double.toString(this.getAngle()) + "\nPerimeter: " + Double.toString(this.getPerimeter()) + "\nArea: " + Double.toString(getArea());
+        return getClass().getName() + "\nSide length: " + this.getSide() + "\nInterior angle: " +
+                this.getAngle() + "\nPerimeter: " + this.getPerimeter() + "\nArea: " + getArea();
     }
     public void draw(GraphicsContext gc) {
         double[] xPoints = new double[sides];

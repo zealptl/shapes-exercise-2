@@ -43,8 +43,8 @@ public class MyOval extends MyShape {
 
     @Override
     public String toString() {
-        return this.getClass().getName() + "\nX Axis length: " + Double.toString(this.xLength) + "\nY Axis length: " + Double.toString(this.yLength)
-                + "\nPerimeter: " + Double.toString(this.getPerimeter()) + "\nArea: " + Double.toString(this.getArea());
+        return this.getClass().getName() + "\nX Axis length: " + this.xLength + "\nY Axis length: " + this.yLength
+                + "\nPerimeter: " + this.getPerimeter() + "\nArea: " + this.getArea();
     }
 
     @Override
