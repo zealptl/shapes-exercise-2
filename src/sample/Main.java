@@ -61,13 +61,12 @@ public class Main extends Application {
         MyLine bottomBorder = new MyLine(w*0.95, h*0.95, w*0.05, h*0.95);
         MyLine leftBorder = new MyLine(w*0.05, h*0.95, w*0.05, h*0.05);
         MyLine diagonalLeft = new MyLine(w*0.05, h*0.05, w*0.95, h*0.95);
-//        MyLine diagonalRight = new MyLine(w*0.95, h*0.05, w*0.05, h*0.95);
         topBorder.draw(gc);
         rightBorder.draw(gc);
         bottomBorder.draw(gc);
         leftBorder.draw(gc);
         diagonalLeft.draw(gc);
-//        diagonalRight.draw(gc);
+
 
         root.getChildren().add(canvas);
         Scene sc = new Scene(root, w, h);

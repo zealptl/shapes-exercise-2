@@ -1,15 +1,16 @@
 package sample;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 
 public abstract class MyShape implements MyShapePosition {
 
+    //Variables
     protected double x;
     protected double y;
     protected MyColor color;
 
+    //Constructors
     public MyShape() {
         this.x = 0;
         this.y = 0;
@@ -21,13 +22,60 @@ public abstract class MyShape implements MyShapePosition {
         this.color = MyColor.BLACK;
     }
 
+    //Getters
     public double getX() {  return x; }
-    public void setX(double x) { this.x = x; }
     public double getY() { return y; }
-    public void setY(double y) { this.y = y; }
     public MyColor getColor() { return color; }
+
+    //Setters
+    public void setX(double x) { this.x = x; }
+    public void setY(double y) { this.y = y; }
     public void setColor(MyColor color) { this.color = color; }
 
+    //Overridden methods from MyPoint interface
+    public double[] getPoints() {
+        double[] xyPoints = new double[2];
+        xyPoints[0] = this.getX();
+        xyPoints[1] = this.getY();
+        return xyPoints;
+    }
+    public void setPoints(double x, double y) {
+        this.setX(x);
+        this.setY(y);
+    }
+    public void moveTo(double delX, double delY) {
+        this.setX(this.x + delX);
+        this.setY(this.y + delY);
+    }
+    public double distanceTo(double x, double y) {
+        return Math.sqrt(Math.pow(x - this.x,2) + Math.pow(y - this.y,2));
+    }
+
+    //Abstract methods
     public abstract String toString();
     public abstract void draw(GraphicsContext gc);
+    public abstract MyRectangle getBoundingBox();
+    public abstract boolean doOverlap(MyShape shape2);
+
+    //Utility method for doOverlap
+    public boolean doMyRectangleOverlap(MyRectangle rect1, MyRectangle rect2) {
+        double[] rect1BottomRight = new double[2];
+        rect1BottomRight[0] = rect1.getX() + rect1.getWidth();
+        rect1BottomRight[1] = rect1.getY() + rect1.getHeight();
+
+        double[] rect2BottomRight = new double[2];
+        rect2BottomRight[0] = rect2.getX() + rect2.getWidth();
+        rect2BottomRight[1] = rect2.getY() + rect2.getHeight();
+
+        if(rect1.getX() > rect2BottomRight[0] //rect1 is right of rect2
+                || rect1BottomRight[0] < rect2.getX() //rect1 is left of rect2
+                || rect1.getY() < rect2BottomRight[1] //rect1 is above rect2
+                || rect1.getY() > rect2.getY()) { //rect1 is below rect2
+            return false;
+        }
+
+        return true;
+
+    }
+
 }
