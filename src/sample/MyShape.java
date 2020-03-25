@@ -4,7 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 
-public abstract class MyShape {
+public abstract class MyShape implements MyShapePosition {
 
     protected double x;
     protected double y;
