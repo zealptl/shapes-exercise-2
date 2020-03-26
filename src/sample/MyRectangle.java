@@ -15,7 +15,7 @@ public class MyRectangle extends MyShape {
         this.height = 0;
     }
     public MyRectangle(double x, double y, double width, double height) {
-        super(x - (width / 2),y - (height / 2));
+        super(x - width / 2, y - height / 2);
         this.width = width;
         this.height = height;
     }
@@ -36,13 +36,6 @@ public class MyRectangle extends MyShape {
         return width * height;
     }
 
-    //Overridden methods from MyShapePosition
-    public MyRectangle getBoundingBox() { return null; }
-    public boolean doOverlap(MyShape shape2) {
-        MyRectangle thisRect = new MyRectangle(this.x, this.y, this.width, this.height);
-        return doMyRectangleOverlap(thisRect, shape2.getBoundingBox());
-    }
-
     //Overridden methods from MyShape
     public String toString() {
         return this.getClass().getName() + "\nWidth: " + this.width + "\nHeight: " + this.height +
@@ -51,5 +44,13 @@ public class MyRectangle extends MyShape {
     public void draw(GraphicsContext gc) {
         gc.setFill(this.color.getColor());
         gc.fillRect(this.x, this.y, this.width, this.height);
+    }
+
+    //Overridden methods from MyShapePosition
+    public MyRectangle getBoundingBox() {
+        return new MyRectangle(this.x + this.width / 2, this.y + this.height / 2, this.width, this.height);
+    }
+    public boolean doOverlap(MyShape shape2) {
+        return doMyRectangleOverlap(this.getBoundingBox(), shape2.getBoundingBox());
     }
 }

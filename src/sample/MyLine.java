@@ -43,14 +43,6 @@ public class MyLine extends MyShape {
         }
     }
 
-    //Overridden methods from MyShapePosition
-    public MyRectangle getBoundingBox() {
-       return new MyRectangle(this.x, this.y, Math.abs(this.xEnd - this.x), Math.abs(this.yEnd - this.x));
-    }
-    public boolean doOverlap(MyShape shape2) {
-        return doMyRectangleOverlap(this.getBoundingBox(), shape2.getBoundingBox());
-    }
-
     //Overridden methods from MyShape
     public String toString() {
         return getClass().getName() + "\nLength: " + this.getLength() + "\nAngle: " + this.get_xAngle();
@@ -58,6 +50,14 @@ public class MyLine extends MyShape {
     public void draw(GraphicsContext gc) {
         gc.setStroke(this.color.getColor());
         gc.strokeLine(this.x, this.y, this.xEnd, this.yEnd);
+    }
+
+    //Overridden methods from MyShapePosition
+    public MyRectangle getBoundingBox() {
+        return new MyRectangle(this.x, this.y, Math.abs(this.xEnd - this.x), Math.abs(this.yEnd - this.x));
+    }
+    public boolean doOverlap(MyShape shape2) {
+        return doMyRectangleOverlap(this.getBoundingBox(), shape2.getBoundingBox());
     }
 
 }

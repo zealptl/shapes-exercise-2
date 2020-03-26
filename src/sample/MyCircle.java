@@ -31,14 +31,6 @@ public class MyCircle extends MyShape {
         return 2 * Math.PI * radius;
     }
 
-    //Overridden methods from MyShapePosition
-    public MyRectangle getBoundingBox() {
-        return new MyRectangle(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
-    }
-    public boolean doOverlap(MyShape shape2) {
-        return doMyRectangleOverlap(this.getBoundingBox(), shape2.getBoundingBox());
-    }
-
     //Overridden methods from MyShape
     public String toString() {
         return getClass().getName() + "\nRadius: " + this.getRadius() + "\nPerimeter: " + this.getPerimeter() + "\nArea: " + this.getArea();
@@ -47,4 +39,13 @@ public class MyCircle extends MyShape {
         gc.setFill(this.color.getColor());
         gc.fillOval(this.x, this.y, this.radius * 2, this.radius * 2);
     }
+
+    //Overridden methods from MyShapePosition
+    public MyRectangle getBoundingBox() {
+        return new MyRectangle(this.x + this.radius, this.y + this.radius, this.radius * 2, this.radius * 2);
+    }
+    public boolean doOverlap(MyShape shape2) {
+        return doMyRectangleOverlap(this.getBoundingBox(), shape2.getBoundingBox());
+    }
+
 }

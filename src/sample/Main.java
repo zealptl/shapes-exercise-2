@@ -22,6 +22,7 @@ public class Main extends Application {
         
         double rect1Width = w*0.7;
         double rect1Height = h*0.7;
+
         MyRectangle rect1 = new MyRectangle(centerX, centerY,rect1Width, rect1Height);
         rect1.setColor(MyColor.BIEGE);
         rect1.draw(gc);
@@ -68,12 +69,12 @@ public class Main extends Application {
         diagonalLeft.draw(gc);
 
 
+
         root.getChildren().add(canvas);
         Scene sc = new Scene(root, w, h);
         primaryStage.setScene(sc);
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);
